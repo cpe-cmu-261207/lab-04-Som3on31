@@ -54,7 +54,7 @@ halp.append(button)
 //core function
 function addTask() {
     const divTask = document.createElement('div')
-    divTask.setAttribute("class", "flex justify-between flex-row")
+    divTask.setAttribute("class", "flex justify-between flex-row max-w-screen-md")
 
     //toggle button visibility
     divTask.addEventListener('mouseenter', () => {
