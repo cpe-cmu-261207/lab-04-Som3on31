@@ -12,6 +12,9 @@ list.toDo = JSON.parse(localStorage.getItem('list.toDo'))
 
 list.finished = JSON.parse(localStorage.getItem('list.finished'))
 
+console.log(list.toDo)
+console.log(list.finished)
+
 if (list.toDo === null) list.toDo = []
 if (list.finished === null) list.finished = []
 
