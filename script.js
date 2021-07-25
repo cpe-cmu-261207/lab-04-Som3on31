@@ -24,7 +24,6 @@ input.addEventListener('input', event => {
     currentInput = event.target.value
 })
 input.addEventListener('keyup', event => {
-    console.log(list.toDo)
     if (event.keyCode === 13 && currentInput === '') alert('Task cannot be empty.')
     else if (event.keyCode === 13 && currentInput !== '') {
         list.toDo.push(currentInput)
@@ -102,6 +101,7 @@ function addTask() {
         list.finished.push(textDiv.innerHTML)
         list.toDo.splice(list.toDo.indexOf('div.innerText'), 1)
         localStorage.setItem('list.finished', JSON.stringify(list.finished))
+
 
         buttonDiv.removeChild(deleteButton)
         buttonDiv.removeChild(finishButton)
