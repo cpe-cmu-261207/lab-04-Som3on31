@@ -45,13 +45,16 @@ const runner = document.getElementById('tester')
 const completedTask = document.getElementById('finished')
 completedTask.style.textDecoration = 'line-through'
 
-runner.append(input)
-runner.append(button)
+const halp = document.getElementById('inputter')
+
+halp.append(input)
+halp.append(button)
+
 
 //core function
 function addTask() {
     const divTask = document.createElement('div')
-    divTask.setAttribute("class", "flex flex-col-reverse")
+    divTask.setAttribute("class", "flex justify-between flex-row")
 
     //toggle button visibility
     divTask.addEventListener('mouseenter', () => {
