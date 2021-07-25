@@ -6,6 +6,12 @@ let list = {
     finished: []
 }
 
+//for loading local storage
+
+list.toDo = JSON.parse(localStorage.getItem(list.toDO))
+
+list.finished = JSON.parse(localStorage.getItem(list.finished))
+
 if (list.toDo === null) list.toDo = []
 if (list.finished === null) list.finished = []
 
@@ -18,6 +24,7 @@ input.addEventListener('input', event => {
     currentInput = event.target.value
 })
 input.addEventListener('keyup', event => {
+    console.log(list.toDo)
     if (event.keyCode === 13 && currentInput === '') alert('Task cannot be empty.')
     else if (event.keyCode === 13 && currentInput !== '') {
         list.toDo.push(currentInput)
@@ -115,9 +122,3 @@ function addTask() {
 
 document.body.append(mainDiv)
 
-//for loading local storage
-
-
-list.toDo = JSON.parse(localStorage.getItem(list.toDO))
-
-list.finished = JSON.parse(localStorage.getItem(list.finished))
