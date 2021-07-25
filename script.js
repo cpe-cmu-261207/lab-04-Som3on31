@@ -102,6 +102,7 @@ function addTask() {
 
 document.body.append(mainDiv)
 
+//for loading local storage
 for(let i=0;;i++){
 
 }
