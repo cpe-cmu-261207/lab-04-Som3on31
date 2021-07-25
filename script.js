@@ -6,8 +6,8 @@ let list = {
     finished: []
 }
 
-
-
+if (list.toDo === null) list.toDo = []
+if (list.finished === null) list.finished = []
 
 //input field
 const input = document.createElement('input')
@@ -20,6 +20,8 @@ input.addEventListener('input', event => {
 input.addEventListener('keyup', event => {
     if (event.keyCode === 13 && currentInput === '') alert('Task cannot be empty.')
     else if (event.keyCode === 13 && currentInput !== '') {
+        list.toDo.push(currentInput)
+        localStorage.setItem('list.toDo', JSON.stringify(list.toDo))
         addTask();
     }
 })
@@ -90,7 +92,7 @@ function addTask() {
     finishButton.innerHTML = 'Done'
     finishButton.setAttribute("class", "border-2 border-black bg-green-200 my-2")
     finishButton.addEventListener('click', () => {
-        list.finished.push(div.innerText)
+        list.finished.push(textDiv.innerHTML)
         list.toDo.splice(list.toDo.indexOf('div.innerText'), 1)
         localStorage.setItem('list.finished', JSON.stringify(list.finished))
 
@@ -116,8 +118,6 @@ document.body.append(mainDiv)
 //for loading local storage
 
 
-list.toDO[i] = JSON.parse(localStorage.getItem(list.toDO))
+list.toDo = JSON.parse(localStorage.getItem(list.toDO))
 
-list.finished[i] = JSON.parse(localStorage.getItem(list.finished))
-
-
+list.finished = JSON.parse(localStorage.getItem(list.finished))
