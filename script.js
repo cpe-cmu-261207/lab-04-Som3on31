@@ -10,6 +10,10 @@ let list = {
 list.toDO = JSON.parse(localStorage.getItem(list.toDO))
 list.finished = JSON.parse(localStorage.getItem(list.finished))
 
+localStorage.setItem("finished",JSON.stringify(finished))
+localStorage.setItem("toDo",JSON.stringify(toDo))
+
+
 //input field
 const input = document.createElement('input')
 input.placeholder = 'Add your todo list here'
@@ -46,7 +50,7 @@ runner.append(button)
 //core function
 function addTask() {
     const divTask = document.createElement('div')
-    divTask.setAttribute("class","flex-row")
+    divTask.setAttribute("class", "flex-row")
 
     //toggle button visibility
     divTask.addEventListener('mouseenter', () => {
@@ -61,8 +65,13 @@ function addTask() {
     //to enter message
     const div = document.createElement('div')
     div.innerHTML = currentInput
-    div.setAttribute("class", "flex-row justify-between")
+    div.setAttribute("class", "flex-row justify-between flex")
     divTask.append(div)
+
+    //finished
+    const finishedDiv = document.createElement('div')
+    div.setAttribute("class", "flex-row justify-between flex")
+    divTask.append(finishedDiv)
 
 
     const buttonDiv = document.createElement('div')
@@ -80,15 +89,17 @@ function addTask() {
     finishButton.innerHTML = 'Done'
     finishButton.setAttribute("class", "border-2 border-black bg-green-200 my-2")
     finishButton.addEventListener('click', () => {
-        div.innerHTML = div.innerHTML.strike()
+        runner.removeChild(divTask)
+        finishedDiv.append()   //done task and it must be striked.
     })
+
+    //default visability
     deleteButton.style.visibility = 'hidden'
     finishButton.style.visibility = 'hidden'
 
-    div.append(finishButton)
-    div.append(deleteButton)
+    buttonDiv.append(finishButton)
+    buttonDiv.append(deleteButton)
     div.append(buttonDiv)
-
 
     runner.append(divTask)
 }
