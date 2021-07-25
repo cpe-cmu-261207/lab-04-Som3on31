@@ -8,9 +8,9 @@ let list = {
 
 //for loading local storage
 
-list.toDo = JSON.parse(localStorage.getItem(toDo))
+list.toDo = JSON.parse(localStorage.getItem('list.toDo'))
 
-list.finished = JSON.parse(localStorage.getItem(finished))
+list.finished = JSON.parse(localStorage.getItem('list.finished'))
 
 if (list.toDo === null) list.toDo = []
 if (list.finished === null) list.finished = []
@@ -99,9 +99,9 @@ function addTask() {
     finishButton.setAttribute("class", "border-2 border-black bg-green-200 my-2")
     finishButton.addEventListener('click', () => {
         list.finished.push(textDiv.innerHTML)
-        list.toDo.splice(list.toDo.indexOf('div.innerText'), 1)
+        list.toDo.splice(list.toDo.indexOf(textDiv.innerText), 1)
         localStorage.setItem('list.finished', JSON.stringify(list.finished))
-
+        localStorage.setItem('list.toDo', JSON.stringify(list.toDo))
 
         buttonDiv.removeChild(deleteButton)
         buttonDiv.removeChild(finishButton)
