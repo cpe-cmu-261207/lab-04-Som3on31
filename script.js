@@ -42,7 +42,8 @@ button.addEventListener('click', event => {
 
 const runner = document.getElementById('tester')
 const completedTask = document.getElementById('finished')
-completedTask.style.textDecoration='line-through'
+completedTask.style.textDecoration = 'line-through'
+
 runner.append(input)
 runner.append(button)
 
@@ -65,7 +66,7 @@ function addTask() {
     const div = document.createElement('div')
     div.innerHTML = currentInput
     div.setAttribute("class", "flex-row justify-between flex")
-    divTask.append(div)    
+    divTask.append(div)
 
     const buttonDiv = document.createElement('div')
 
@@ -84,6 +85,7 @@ function addTask() {
     finishButton.setAttribute("class", "border-2 border-black bg-green-200 my-2")
     finishButton.addEventListener('click', () => {
         runner.removeChild(divTask)
+        divTask.removeChild(buttonDiv)
         completedTask.append(divTask)   //done task and it must be striked.
     })
 
@@ -98,5 +100,12 @@ function addTask() {
     runner.append(divTask)
 }
 
-
 document.body.append(mainDiv)
+
+for(let i=0;;i++){
+
+}
+
+for(let i=0;;i++){
+
+}
