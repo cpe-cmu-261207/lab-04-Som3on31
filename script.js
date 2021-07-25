@@ -93,6 +93,8 @@ function addTask() {
     deleteButton.innerHTML = 'Delete'
     deleteButton.setAttribute("class", "border-2 border-black bg-red-200 my-2 mx-2")
     deleteButton.addEventListener('click', () => {
+        list.toDo.splice(list.toDo.indexOf(textDiv.innerText), 1)
+        localStorage.setItem('list.toDo', JSON.stringify(list.toDo))
         runner.removeChild(divTask)
     })
 
