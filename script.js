@@ -8,9 +8,9 @@ let list = {
 
 //for loading local storage
 
-list.toDo = JSON.parse(localStorage.getItem(list.toDO))
+list.toDo = JSON.parse(localStorage.getItem(toDo))
 
-list.finished = JSON.parse(localStorage.getItem(list.finished))
+list.finished = JSON.parse(localStorage.getItem(finished))
 
 if (list.toDo === null) list.toDo = []
 if (list.finished === null) list.finished = []
