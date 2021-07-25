@@ -41,6 +41,7 @@ button.addEventListener('click', event => {
 })
 
 const runner = document.getElementById('tester')
+
 const completedTask = document.getElementById('finished')
 completedTask.style.textDecoration = 'line-through'
 
@@ -50,7 +51,7 @@ runner.append(button)
 //core function
 function addTask() {
     const divTask = document.createElement('div')
-    divTask.setAttribute("class", "flex-row")
+    divTask.setAttribute("class", "flex flex-col-reverse")
 
     //toggle button visibility
     divTask.addEventListener('mouseenter', () => {
@@ -84,8 +85,9 @@ function addTask() {
     finishButton.innerHTML = 'Done'
     finishButton.setAttribute("class", "border-2 border-black bg-green-200 my-2")
     finishButton.addEventListener('click', () => {
+        buttonDiv.removeChild(deleteButton)
+        buttonDiv.removeChild(finishButton)
         runner.removeChild(divTask)
-        divTask.removeChild(buttonDiv)
         completedTask.append(divTask)   //done task and it must be striked.
     })
 
@@ -103,10 +105,3 @@ function addTask() {
 document.body.append(mainDiv)
 
 //for loading local storage
-for(let i=0;;i++){
-
-}
-
-for(let i=0;;i++){
-
-}
