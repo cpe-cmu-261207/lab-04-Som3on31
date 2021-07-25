@@ -35,7 +35,7 @@ button.addEventListener('click', event => {
     if (currentInput === '') alert('Task cannot be empty.')
     else {
         list.toDO.push(currentInput)
-        localStorage.setItem('list.toDo',JSON.stringify(list.toDo))
+        localStorage.setItem('list.toDo', JSON.stringify(list.toDo))
         addTask();
     }
 })
@@ -91,8 +91,8 @@ function addTask() {
     finishButton.setAttribute("class", "border-2 border-black bg-green-200 my-2")
     finishButton.addEventListener('click', () => {
         list.finished.push(div.innerText)
-        list.toDo.splice(list.toDo.indexOf('div.innerText'),1)
-        localStorage.setItem('list.finished',JSON.stringify(list.finished))
+        list.toDo.splice(list.toDo.indexOf('div.innerText'), 1)
+        localStorage.setItem('list.finished', JSON.stringify(list.finished))
 
         buttonDiv.removeChild(deleteButton)
         buttonDiv.removeChild(finishButton)
@@ -115,11 +115,9 @@ document.body.append(mainDiv)
 
 //for loading local storage
 
-for(let i=0;i<1;i++){
-    list.toDO[i] = JSON.parse(localStorage.getItem(list.toDO))
-}
 
-for(let i=0;i<1;i++){
-    list.finished[i] = JSON.parse(localStorage.getItem(list.finished))
-}
+list.toDO[i] = JSON.parse(localStorage.getItem(list.toDO))
+
+list.finished[i] = JSON.parse(localStorage.getItem(list.finished))
+
 
