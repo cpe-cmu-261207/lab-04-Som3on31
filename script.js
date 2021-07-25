@@ -6,26 +6,31 @@ let list = {
     finished: []
 }
 
-list.toDO = JSON.parse(localStorage.getItem())
-list.finished = JSON.parse(localStorage.getItem())
 
+list.toDO = JSON.parse(localStorage.getItem(list.toDO))
+list.finished = JSON.parse(localStorage.getItem(list.finished))
+
+//input field
 const input = document.createElement('input')
 input.placeholder = 'Add your todo list here'
+input.setAttribute("class", "border-2 border-black mr-2")
 
 input.addEventListener('input', event => {
     currentInput = event.target.value
 })
 input.addEventListener('keyup', event => {
     if (event.keyCode === 13 && currentInput === '') alert('Task cannot be empty.')
-    else if(event.keyCode === 13 && currentInput !== ''){
+    else if (event.keyCode === 13 && currentInput !== '') {
         addTask();
     }
 })
 
 const mainDiv = document.createElement('div')
 
+//button
 const button = document.createElement('button')
 button.innerHTML = '+'
+button.setAttribute("class", "border-2 border-black")
 
 button.addEventListener('click', event => {
     if (currentInput === '') alert('Task cannot be empty.')
@@ -38,6 +43,7 @@ const runner = document.getElementById('tester')
 runner.append(input)
 runner.append(button)
 
+//core function
 function addTask() {
     const divTask = document.createElement('div')
 
@@ -55,14 +61,18 @@ function addTask() {
     div.innerHTML = currentInput
     divTask.append(div)
 
+    //delete button
     const deleteButton = document.createElement('button')
     deleteButton.innerHTML = 'Delete'
+    deleteButton.setAttribute("class", "border-2 border-black")
     deleteButton.addEventListener('click', () => {
         runner.removeChild(divTask)
     })
 
+    //"done" button
     const finishButton = document.createElement('button')
     finishButton.innerHTML = 'Done'
+    finishButton.setAttribute("class", "border-2 border-black")
     finishButton.addEventListener('click', () => {
         div.innerHTML = div.innerHTML.strike()
     })
