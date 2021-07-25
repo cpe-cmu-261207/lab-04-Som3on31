@@ -36,8 +36,6 @@ runner.append(input)
 runner.append(button)
 
 function addTask() {
-
-
     const divTask = document.createElement('div')
 
     divTask.addEventListener('mouseenter', () => {
