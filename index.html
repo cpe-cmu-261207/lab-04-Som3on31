@@ -13,6 +13,10 @@
 		body {
 			background-image: url('bg png.png');
 		}
+
+		button {
+			text-align: center;
+		}
 	</style>
 
 </head>
@@ -20,15 +24,21 @@
 <body>
 
 	<!--content-->
-	<div class="flex bg-white max-w-screen-md mx-auto border-2 shadow-md my-8 mt-12">
-		<div class="flex-col justify-center">
+	<div class="flex bg-white max-w-screen-md mx-auto border-2 shadow-md my-8 mt-12 rounded-xl">
+		<div class="flex-col justify-center m-4">
 			<div class="text-4xl font-semibold">
 				Minimal Todo List
 			</div>
 
-			<div>
-				<input type='text'>
-				<button onclick="addList()">+</button>
+			<div class="my-4">
+				<div id="inputAndButton">
+					<input type='text' placeholder="Enter your list" class="mr-4" id="inputField">
+					<button onclick="addList()" id = "button">+</button>
+					
+					<p id="toDoList"></p>
+					<p id="finishedList"></p>
+				</div>
+
 			</div>
 
 		</div>
