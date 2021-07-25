@@ -36,6 +36,8 @@ button.setAttribute("class", "border-2 border-black")
 button.addEventListener('click', event => {
     if (currentInput === '') alert('Task cannot be empty.')
     else {
+        list.toDO.push(currentInput)
+        localStorage.setItem('list.toDo',JSON.stringify(list.toDo))
         addTask();
     }
 })
@@ -88,6 +90,10 @@ function addTask() {
     finishButton.innerHTML = 'Done'
     finishButton.setAttribute("class", "border-2 border-black bg-green-200 my-2")
     finishButton.addEventListener('click', () => {
+        list.finished.push(div.innerText)
+        list.toDo.splice(list.toDo.indexOf('div.innerText'),1)
+        localStorage.setItem('list.finished',JSON.stringify(list.finished))
+
         buttonDiv.removeChild(deleteButton)
         buttonDiv.removeChild(finishButton)
         runner.removeChild(divTask)
