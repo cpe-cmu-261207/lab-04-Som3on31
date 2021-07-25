@@ -10,9 +10,6 @@ let list = {
 list.toDO = JSON.parse(localStorage.getItem(list.toDO))
 list.finished = JSON.parse(localStorage.getItem(list.finished))
 
-localStorage.setItem("finished",JSON.stringify(finished))
-localStorage.setItem("toDo",JSON.stringify(toDo))
-
 
 //input field
 const input = document.createElement('input')
@@ -44,6 +41,8 @@ button.addEventListener('click', event => {
 })
 
 const runner = document.getElementById('tester')
+const completedTask = document.getElementById('finished')
+completedTask.style.textDecoration='line-through'
 runner.append(input)
 runner.append(button)
 
@@ -66,15 +65,10 @@ function addTask() {
     const div = document.createElement('div')
     div.innerHTML = currentInput
     div.setAttribute("class", "flex-row justify-between flex")
-    divTask.append(div)
-
-    //finished
-    const finishedDiv = document.createElement('div')
-    div.setAttribute("class", "flex-row justify-between flex")
-    divTask.append(finishedDiv)
-
+    divTask.append(div)    
 
     const buttonDiv = document.createElement('div')
+
 
     //delete button
     const deleteButton = document.createElement('button')
@@ -90,7 +84,7 @@ function addTask() {
     finishButton.setAttribute("class", "border-2 border-black bg-green-200 my-2")
     finishButton.addEventListener('click', () => {
         runner.removeChild(divTask)
-        finishedDiv.append()   //done task and it must be striked.
+        completedTask.append(divTask)   //done task and it must be striked.
     })
 
     //default visability
