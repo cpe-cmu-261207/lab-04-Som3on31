@@ -6,7 +6,7 @@ let list = {
     finished: []
 }
 
-
+//load stuff
 list.toDO = JSON.parse(localStorage.getItem(list.toDO))
 list.finished = JSON.parse(localStorage.getItem(list.finished))
 
@@ -46,25 +46,31 @@ runner.append(button)
 //core function
 function addTask() {
     const divTask = document.createElement('div')
+    divTask.setAttribute("class","flex-row")
 
+    //toggle button visibility
     divTask.addEventListener('mouseenter', () => {
         deleteButton.style.visibility = 'visible'
         finishButton.style.visibility = 'visible'
     })
-
     divTask.addEventListener('mouseleave', () => {
         deleteButton.style.visibility = 'hidden'
         finishButton.style.visibility = 'hidden'
     })
 
+    //to enter message
     const div = document.createElement('div')
     div.innerHTML = currentInput
+    div.setAttribute("class", "flex-row justify-between")
     divTask.append(div)
+
+
+    const buttonDiv = document.createElement('div')
 
     //delete button
     const deleteButton = document.createElement('button')
     deleteButton.innerHTML = 'Delete'
-    deleteButton.setAttribute("class", "border-2 border-black")
+    deleteButton.setAttribute("class", "border-2 border-black bg-red-200 my-2 mx-2")
     deleteButton.addEventListener('click', () => {
         runner.removeChild(divTask)
     })
@@ -72,17 +78,18 @@ function addTask() {
     //"done" button
     const finishButton = document.createElement('button')
     finishButton.innerHTML = 'Done'
-    finishButton.setAttribute("class", "border-2 border-black")
+    finishButton.setAttribute("class", "border-2 border-black bg-green-200 my-2")
     finishButton.addEventListener('click', () => {
         div.innerHTML = div.innerHTML.strike()
     })
     deleteButton.style.visibility = 'hidden'
     finishButton.style.visibility = 'hidden'
 
-    divTask.append(finishButton)
-    divTask.append(deleteButton)
+    div.append(finishButton)
+    div.append(deleteButton)
+    div.append(buttonDiv)
 
-    divTask.append(document.createElement('br'))
+
     runner.append(divTask)
 }
 
