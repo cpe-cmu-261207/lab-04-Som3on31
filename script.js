@@ -6,6 +6,9 @@ let list = {
     finished: []
 }
 
+list.toDO = JSON.parse(localStorage.getItem())
+list.finished = JSON.parse(localStorage.getItem())
+
 const input = document.createElement('input')
 input.placeholder = 'Add your todo list here'
 
@@ -14,7 +17,7 @@ input.addEventListener('input', event => {
 })
 input.addEventListener('keyup', event => {
     if (event.keyCode === 13 && currentInput === '') alert('Task cannot be empty.')
-    if (event.keyCode === 13) {
+    else if(event.keyCode === 13 && currentInput !== ''){
         addTask();
     }
 })
