@@ -6,12 +6,23 @@ let list = {
     finished: []
 }
 
+const runner = document.getElementById('tester')
+
+
 function addTask() {
+    runner.append(input)
+    runner.append(button)
+    
     const divTask = document.createElement('div')
 
-    divTask.addEventListener('mousemove', () => {
-        deleteButton.style.visibility = 'visable'
-        finishButton.style.visibility = 'visable'
+    divTask.addEventListener('mouseenter', () => {
+        deleteButton.style.visibility = 'visible'
+        finishButton.style.visibility = 'visible'
+    })
+
+    divTask.addEventListener('mouseleave', () => {
+        deleteButton.style.visibility = 'hidden'
+        finishButton.style.visibility = 'hidden'
     })
 
     const div = document.createElement('div')
@@ -21,20 +32,22 @@ function addTask() {
     const deleteButton = document.createElement('button')
     deleteButton.innerHTML = 'Delete'
     deleteButton.addEventListener('click', () => {
-        mainDiv.removeChild(divTask)
+        runner.removeChild(divTask)
     })
 
     const finishButton = document.createElement('button')
-    finishButton.innerHTML = 'Finish'
+    finishButton.innerHTML = 'Done'
     finishButton.addEventListener('click', () => {
         div.innerHTML = div.innerHTML.strike()
     })
+    deleteButton.style.visibility = 'hidden'
+    finishButton.style.visibility = 'hidden'
 
     divTask.append(finishButton)
     divTask.append(deleteButton)
 
     divTask.append(document.createElement('br'))
-    mainDiv.append(divTask)
+    runner.append(divTask)
 }
 
 
